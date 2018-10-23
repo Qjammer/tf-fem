@@ -1,4 +1,5 @@
 import tensorflow as tf
+import math
 
 class BaseElement:
 	self.nodes
