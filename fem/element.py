@@ -1,4 +1,4 @@
-import tensorflow as ts
+import tensorflow as tf
 
 class BaseElement:
 	nodes
