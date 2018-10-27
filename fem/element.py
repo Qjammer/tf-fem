@@ -31,13 +31,14 @@ class BaseStdElement:
 class TetrahedronStdElement(BaseStdElement):
 
 	def __init__(self):
-		super(TetrahedronStfElement,self).__init__()
+		super(TetrahedronStdElement,self).__init__()
 		pass
 
 	def getBasePolynomials(self,order):
-		if(order!=1): raise ValueError("Element orders different from 1 are not implemented")
-		return tf.constant([[[1,-1],[-1,0]],\
-							[[-1,0],[0,0]]])
+		with tf.name_scope("basis_poly"):
+			if(order!=1): raise ValueError("Element orders different from 1 are not implemented")
+			return tf.constant([[[1.,-1.],[-1.,0.]],\
+								[[-1.,0.],[0.,0.]]])
 		
 
 	def getMatrix(self,N_dims,B_dims,N_vertex,B_vertex):
@@ -48,5 +49,3 @@ class TetrahedronStdElement(BaseStdElement):
 		# 4. Return matrix of integral of polynomials
 		pass
 
-	def monomer_integral_3simplex(self,nx,ny,nz):
-		return math.factorial(nx)*math.factorial(ny)*math.factorial(nz)/math.factorial(3+nx+ny+nz)
